@@ -87,6 +87,6 @@ The carousel is ready to use with seamless looping and all controls.
 ### License
 
 MIT — free for personal and commercial use.  
-Author: [Your Name Here]
+Author: Bartłomiej Balcerzak
 
 ---
