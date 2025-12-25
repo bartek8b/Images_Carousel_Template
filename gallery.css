@@ -1,0 +1,132 @@
+:root {
+	/* Images carousel */
+	--gapBase: 0.5rem;
+
+	--primary: hsl(205, 44%, 41%);
+	--bg: hsl(0, 0%, 95%);
+	--bg-light: hsl(0, 0%, 100%);
+
+	--frame-width: 70vw;
+	--frame-height: 70vh;
+	--frame-aspect-ratio: 3 / 4;
+}
+/* Pictures carousel */
+.gallery-title {
+	text-align: center;
+}
+.carousel-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: var(--gapBase);
+}
+.frame-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--gapBase);
+}
+.frame {
+	width: auto;
+	height: var(--frame-height);
+	overflow: hidden;
+	border-radius: var(--gapBase);
+	box-shadow: var(--shadow);
+	/* Blocks windows from scrolling when zoom is active */
+	touch-action: pan-y;
+}
+.frame-container button,
+.play-btn {
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	box-shadow: var(--shadow);
+	border-radius: var(--gapBase);
+	aspect-ratio: 1 / 2;
+	width: calc(var(--gapBase) * 4);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--font);
+}
+.frame-container button:active,
+.play-btn:active {
+	/* :hover in media queries (hover) */
+	background-color: var(--bg-light);
+	box-shadow: var(--shadow-big);
+	color: var(--primary);
+}
+.play-btn {
+	height: calc(var(--gapBase) * 4);
+	width: auto;
+	aspect-ratio: 2 / 1;
+}
+.tape {
+	display: flex;
+	transition: transform 0.6s ease;
+	height: 100%;
+}
+.tape > img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.dots-box {
+	display: flex;
+	gap: var(--gapBase);
+}
+.dot {
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	box-shadow: var(--shadow);
+	border-radius: 999rem;
+	aspect-ratio: 1 / 1;
+	width: calc(var(--gapBase) * 2);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.dot:active {
+	/* :hover in media queries (hover) */
+	box-shadow: var(--shadow-big);
+}
+.dot-filled {
+	background-color: var(--primary);
+}
+/* Specific aspect ratio for certain type of gallery, rest is universal, without subclass */
+.frame.ue-projects-frame,
+.tape > img.ue-projects-img {
+	aspect-ratio: var(--frame-aspect-ratio-ue-projects);
+}
+.frame.facilities-frame,
+.tape > img.facilities-img {
+	aspect-ratio: var(--frame-aspect-ratio-facilities);
+}
+/* Media queries */
+@media (max-width: 768px) {
+	.frame-container button {
+		display: none;
+	}
+	.frame {
+		width: var(--frame-width);
+		height: auto;
+	}
+	.tape > img {
+		width: var(--frame-width);
+		height: auto;
+	}
+}
+
+@media (hover: hover) {
+	.frame-container button:hover,
+	.play-btn:hover {
+		background-color: var(--bg-light);
+		box-shadow: var(--shadow-big);
+		color: var(--primary);
+	}
+	.dot:hover {
+		box-shadow: var(--shadow-big);
+	}
+}
